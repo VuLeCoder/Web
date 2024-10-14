@@ -6,54 +6,124 @@
     <title>Document</title>
     <link rel="stylesheet" href="../output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="flex justify-center h-screen w-screen bg-customBlue overflow-hidden" onload="CheckScreenWidth()">
     <div id="blur" class="h-full w-full bg-gray-600 opacity-80 fixed left-60 z-50 hidden"></div>
 
-    <section class="flex flex-1 max-w- flex-col max-w-312.5 overflow-hidden">
+    <section class="flex flex-1 flex-col overflow-hidden">
         <header class="h-10 w-full sticky top-0 bg-customBlue flex flex-row">
             <span id="menu_space" class="hidden h-10 w-10 justify-center items-center text-gray-800 cursor-pointer"><i id="menu_bar" class="fas fa-bars"></i></span>
             <span id="title" class="h-10 w-50 flex justify-evenly items-center font-forte text-2xl">PawnMaster</span>
-            <span id="page" class="h-10 w-48 flex justify-evenly items-center text-xl font-medium">Dashboard</span>
+            <span id="page" class="h-10 w-40 flex justify-evenly items-center text-xl font-medium">Dashboard</span>
         </header>
 
         <main class="flex flex-1 bg-customBlue overflow-hidden">
-            <aside id="aside" class="h-full w-50 p-2.5 pl-0">
+            <aside id="aside" class="h-full w-50 p-2.5">
                 <ul class=" flex flex-col">
                     <li><a class="w-full h-10 flex flex-row items-center" href="/public/dashboard/dashboard.html"> <span class="flex justify-center items-center h-full w-10"><i class="fas fa-home"></i></span> Dashboard </a></li>
-                    <li><a class="w-full h-10 flex flex-row items-center" href="/public/dashboard/dashboard.html"> <span class="flex justify-center items-center h-full w-10"><i class="fas fa-home"></i></span> Dashboard </a></li>
-                    <li><a class="w-full h-10 flex flex-row items-center" href="/public/dashboard/dashboard.html"> <span class="flex justify-center items-center h-full w-10"><i class="fas fa-home"></i></span> Dashboard </a></li>
-                    <li><a class="w-full h-10 flex flex-row items-center" href="/public/dashboard/dashboard.html"> <span class="flex justify-center items-center h-full w-10"><i class="fas fa-home"></i></span> Dashboard </a></li>
-                    <li><a class="w-full h-10 flex flex-row items-center" href="/public/dashboard/dashboard.html"> <span class="flex justify-center items-center h-full w-10"><i class="fas fa-home"></i></span> Dashboard </a></li>
+                    <li><a class="w-full h-10 flex flex-row items-center" href="/public/transaction/transaction.html"> <span class="flex justify-center items-center h-full w-10"><i class="fas fa-money-bill"></i></span> Transaction </a></li>
+                    <li><a class="w-full h-10 flex flex-row items-center" href="/public/customer/customer.html"> <span class="flex justify-center items-center h-full w-10"><i class="fas fa-users"></i></span> Customers </a></li>
+                    <li><a class="w-full h-10 flex flex-row items-center" href="/public/inventory/inventory.html"> <span class="flex justify-center items-center h-full w-10"><i class="fas fa-archive"></i></span> Inventory </a></li>
                 </ul>
             </aside>
 
             <section id="section" class="flex flex-col flex-1 pb-2.5 pl-2.5 pr-1 overflow-y-scroll custom-scrollbar">
                 <header class="w-full flex flex-wrap">
                     <div class="flex justify-evenly flex-wrap flex-1 h-fit">
-                        <div class="bg-white flex flex-1 h-44 min-w-72 rounded-lg shadow-custom m-2.5 relative"></div>
-                        <div class="bg-white flex flex-1 h-44 min-w-72 rounded-lg shadow-custom m-2.5 relative"></div>
+
+                        <div class="bg-white flex-1 h-52 min-w-72 rounded-lg shadow-custom m-2.5 relative">
+
+                            <header class="w-full h-12 flex items-center justify-evenly p-1">
+                                <h1 class="h-full w-1/2 font-bold text-lg pl-5 pt-2">Total Loans </h1>
+                                <main id="Loans_content" class="h-full w-1/2 flex flex-col justify-center items-end pr-5">
+                                    <h1 class="font-semibold text-2xl">XXX $</h1>
+                                    <p class="text-sm">3.5%</p>
+                                </main>
+                            </header>
+                            
+                            <section class="flex h-40 w-full items-center justify-center p-2.5 pt-0">
+                                <canvas id="Loans"></canvas>
+                            </section>
+
+                        </div>
+
+                        <div class="bg-white flex-1 h-52 min-w-72 rounded-lg shadow-custom m-2.5 relative">
+
+                            <header class="w-full h-12 flex items-center justify-evenly p-1">
+                                <h1 class="h-full w-1/2 font-bold text-lg pl-5 pt-2">New Customer </h1>
+                                <main id="Loans_content" class="h-full w-1/2 flex flex-col justify-center items-end pr-5">
+                                    <h1 class="font-semibold text-2xl">XXX $</h1>
+                                    <p class="text-sm">3.5%</p>
+                                </main>
+                            </header>
+                            
+                            <section class="flex h-40 w-full items-center justify-center p-2.5 pt-0">
+                                <canvas id="Customer"></canvas>
+                            </section>
+
+                        </div>
+
                     </div>
 
                     <div class="flex justify-evenly flex-wrap flex-1 h-fit">
-                        <div class="bg-white flex flex-1 h-44 min-w-72 rounded-lg shadow-custom m-2.5 relative"></div>
-                        <div class="bg-white flex flex-1 h-44 min-w-72 rounded-lg shadow-custom m-2.5 relative"></div>
+
+                        <div class="bg-white flex-1 h-52 min-w-72 rounded-lg shadow-custom m-2.5 relative">
+
+                            <header class="w-full h-12 flex items-center justify-evenly p-1">
+                                <h1 class="h-full w-1/2 font-bold text-lg pl-5 pt-2">Total Loans </h1>
+                                <main id="Loans_content" class="h-full w-1/2 flex flex-col justify-center items-end pr-5">
+                                    <h1 class="font-semibold text-2xl">XXX $</h1>
+                                    <p class="text-sm">3.5%</p>
+                                </main>
+                            </header>
+                            
+                            <section class="flex h-40 w-full items-center justify-center p-2.5 pt-0">
+                                <canvas id="Loans"></canvas>
+                            </section>
+
+                        </div>
+                        <div class="bg-white flex-1 h-52 min-w-72 rounded-lg shadow-custom m-2.5 relative">
+
+                            <header class="w-full h-12 flex items-center justify-evenly p-1">
+                                <h1 class="h-full w-1/2 font-bold text-lg pl-5 pt-2">Total Loans </h1>
+                                <main id="Loans_content" class="h-full w-1/2 flex flex-col justify-center items-end pr-5">
+                                    <h1 class="font-semibold text-2xl">XXX $</h1>
+                                    <p class="text-sm">3.5%</p>
+                                </main>
+                            </header>
+                            
+                            <section class="flex h-40 w-full items-center justify-center p-2.5 pt-0">
+                                <canvas id="Loans"></canvas>
+                            </section>
+                            
+                        </div>
+
                     </div>
                 </header>
 
                 <main class="w-full flex justify-center items-center flex-wrap">
-                    <div class="bg-white shadow-custom rounded-lg flex-1 min-h-80 min-w-75 m-2.5 overflow-auto"></div>
-                    <div class="bg-white shadow-custom rounded-lg flex-1 min-h-80 min-w-75 m-2.5 overflow-auto"></div>
+
+                    <div class="bg-white shadow-custom rounded-lg flex-1 min-h-80 min-w-75 m-2.5 overflow-auto">
+
+                    </div>
+
+                    <div class="bg-white shadow-custom rounded-lg flex-1 min-h-80 min-w-75 m-2.5 overflow-auto">
+
+                    </div>
+
                 </main>
 
                 <footer class="w-full min-h-96 p-2.5">
                     <div class="bg-white w-full h-full shadow-custom rounded-lg"></div>
                 </footer>
+
             </section>
         </main>
     </section>
 
-    <script src="./script.js"></script>
+    <script src="/public/script.js"></script>
+    <script src="./dashboard.js"></script>
 
 </body>
 </html>

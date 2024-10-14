@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="../output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-<body class="flex h-screen w-screen bg-customBlue overflow-hidden" onload="CheckScreenWidth()">
+<body class="flex justify-center h-screen w-screen bg-customBlue overflow-hidden" onload="CheckScreenWidth()">
     <div id="blur" class="h-full w-full bg-gray-600 opacity-80 fixed left-60 z-50 hidden"></div>
 
     <section class="flex flex-1 flex-col overflow-hidden">
         <header class="h-10 w-full sticky top-0 bg-customBlue flex flex-row">
             <span id="menu_space" class="hidden h-10 w-10 justify-center items-center text-gray-800 cursor-pointer"><i id="menu_bar" class="fas fa-bars"></i></span>
             <span id="title" class="h-10 w-50 flex justify-evenly items-center font-forte text-2xl">PawnMaster</span>
-            <span id="page" class="h-10 w-40 flex justify-evenly items-center text-xl font-medium">Customers</span>
+            <span id="page" class="h-10 w-40 flex justify-evenly items-center text-xl font-medium">Transaction</span>
         </header>
 
         <main class="flex flex-1 bg-customBlue overflow-hidden">
@@ -27,10 +27,16 @@
                 </ul>
             </aside>
 
-            <section id="section" class="flex flex-1 overflow-y-scroll custom-scrollbar">
-                <main class="w-full h-full flex p-2.5 pt-0">
-                    <div class="flex flex-1 bg-white shadow-custom rounded-lg m-2.5 overflow-auto"></div>
-                    <!-- <div class="bg-white shadow-custom rounded-lg flex-1 min-h-80 min-w-75 m-2.5 overflow-auto"></div> -->
+            <section id="section" class="flex flex-col flex-1 pb-2.5 pl-2.5 pr-1 overflow-y-scroll custom-scrollbar">
+                <header class="w-full flex flex-wrap">
+                    <div class="flex justify-evenly flex-wrap flex-1 h-fit">
+                        <div class="bg-white flex flex-1 h-44 min-w-72 rounded-lg shadow-custom m-2.5 relative"></div>
+                        <div class="bg-white flex flex-1 h-44 min-w-72 rounded-lg shadow-custom m-2.5 relative"></div>
+                    </div>
+                </header>
+
+                <main class="w-full h-full flex p-2.5">
+                    <div class="bg-white shadow-custom rounded-lg flex-1 min-h-80 min-w-75 overflow-auto"></div>
                 </main>
             </section>
         </main>

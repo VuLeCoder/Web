@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  important: true,
   content: ["./public/**/*.html", "./public/**/*.js"],
   theme: {
     extend: {
+      fontSize: {
+        small: "10px",
+      },
       colors: {
         customBlue: "#edf2f9",
         customText: "#bbc4cf",
@@ -29,5 +33,4 @@ module.exports = {
   },
   plugins: [require("tailwind-scrollbar")],
 };
-
 
