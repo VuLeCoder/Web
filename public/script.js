@@ -83,3 +83,28 @@ function Click_menu_bar() {
 }
 menu_space.addEventListener("click", Click_menu_bar);
 _blur_.addEventListener("click", Click_menu_bar);
+
+
+const tran = document.getElementById("tran");
+const tran_his = document.getElementById("tran_his");
+const cre_tran = document.getElementById("cre_tran");
+
+let y = 1;
+function ClickTran() {
+  if (y == 1) {
+    tran_his.classList.add("list-item");
+    tran_his.classList.remove("hidden");
+    cre_tran.classList.add("list-item");
+    cre_tran.classList.remove("hidden");
+
+    y = 0;
+  } else {
+    tran_his.classList.add("hidden");
+    tran_his.classList.remove("list-item");
+    cre_tran.classList.add("hidden");
+    cre_tran.classList.remove("list-item");
+
+    y = 1;
+  }
+}
+tran.addEventListener("click", ClickTran);

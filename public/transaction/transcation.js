@@ -1,85 +1,42 @@
-const menu_space = document.getElementById("menu_space");
-const menu_bar = document.getElementById("menu_bar");
-const title = document.getElementById("title");
-const aside = document.getElementById("aside");
-const section = document.getElementById("section");
-const _blur_ = document.getElementById("blur");
+fetch("tran_data.json")
+  .then((response) => response.json())
+  .then((data) => {
+    const tbody = document.getElementById("tbody");
+    let i = 1;
+    data.forEach((item) => {
+      const row = document.createElement("tr");
+      row.setAttribute("data-status", item.status);
+      row.setAttribute("class", "even:bg-gray-400 odd:bg-white");
 
-function CheckScreenWidth() {
-  if (window.innerWidth >= 1200) {
-    menu_space.classList.add("hidden");
-    menu_space.classList.remove("flex");
+      row.innerHTML = `
+        <td class="p-2.5 text-center">${item.id}</td>
+        <td class="p-2.5 text-center">${item.customer}</td>
+        <td class="p-2.5 text-center">${item.loan}</td>
+        <td class="p-2.5 text-center">${item.interest_rate}</td>
+        <td class="p-2.5 text-center">${item.date_created}</td>
+        <td class="p-2.5 text-center">${item.expiration_date}</td>
+        <td class="p-2.5 text-center">${item.status}</td>
+        `;
 
-    aside.classList.add("block");
-    aside.classList.remove("hidden");
+      tbody.appendChild(row);
+    });
+  });
 
-    aside.classList.add("flex");
-    aside.classList.remove("hidden");
-    aside.classList.add("w-50");
-    aside.classList.remove("w-60");
-    aside.classList.remove("bg-customBlue");
-    aside.classList.remove("fixed");
-    aside.classList.remove("z-10");
+  
 
-    _blur_.classList.add("hidden");
-    _blur_.classList.remove("block");
+function filterTableStatus() {
+  const filterValue = document.getElementById("statusFilter").value;
+  const rows = document.getElementById("tbody").getElementsByTagName("tr");
 
-    title.classList.add("flex");
-    title.classList.remove("hidden");
+  // Lặp qua tất cả các hàng của bảng
+  for (let i = 0; i < rows.length; i++) {
+    const rowStatus = rows[i].getAttribute("data-status");
 
-    // section.classList.remove("min-w-full");
-  } else {
-    menu_space.classList.remove("hidden");
-    menu_space.classList.add("flex");
-    menu_bar.classList.add("fa-bars");
-    menu_bar.classList.remove("fa-times");
-
-    aside.classList.remove("block");
-    aside.classList.add("hidden");
-    aside.classList.add("w-60");
-    aside.classList.remove("w-50");
-    aside.classList.add("bg-customBlue");
-    aside.classList.add("fixed");
-    aside.classList.add("z-10");
-
-    title.classList.remove("flex");
-    title.classList.add("hidden");
-
-    // section.classList.add("min-w-full");
+    // Kiểm tra điều kiện lọc
+    if (filterValue === "all" || rowStatus === filterValue) {
+      rows[i].style.display = ""; // Hiển thị hàng phù hợp
+    } else {
+      rows[i].style.display = "none"; // Ẩn hàng không phù hợp
+    }
   }
 }
-window.addEventListener("resize", CheckScreenWidth);
-
-let x = 0;
-function Click_menu_bar() {
-  if (x == 0) {
-    menu_bar.classList.remove("fa-bars");
-    menu_bar.classList.add("fa-times");
-
-    title.classList.add("flex");
-    title.classList.remove("hidden");
-
-    aside.classList.add("flex");
-    aside.classList.remove("hidden");
-
-    _blur_.classList.add("block");
-    _blur_.classList.remove("hidden");
-
-    x = 1;
-  } else {
-    menu_bar.classList.add("fa-bars");
-    menu_bar.classList.remove("fa-times");
-
-    title.classList.add("hidden");
-    title.classList.remove("flex");
-
-    aside.classList.add("hidden");
-    aside.classList.remove("flex");
-
-    _blur_.classList.add("hidden");
-    _blur_.classList.remove("block");
-    x = 0;
-  }
-}
-menu_space.addEventListener("click", Click_menu_bar);
-_blur_.addEventListener("click", Click_menu_bar);

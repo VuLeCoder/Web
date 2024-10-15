@@ -17,11 +17,15 @@ module.exports = {
       boxShadow: {
         custom: "0 0 10px rgba(0, 0, 0, 0.1)", // Bóng tùy chỉnh
       },
+      height: {
+        85: "340px",
+      },
       width: {
         50: "200px",
       },
       minWidth: {
         150: "600px",
+        125: "500px",
         75: "300px",
       },
       maxWidth: {
