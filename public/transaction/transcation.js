@@ -25,16 +25,26 @@ fetch("tran_data.json")
   
 
 function filterTableStatus() {
+  let y = 1;
   const filterValue = document.getElementById("statusFilter").value;
   const rows = document.getElementById("tbody").getElementsByTagName("tr");
 
   // Lặp qua tất cả các hàng của bảng
   for (let i = 0; i < rows.length; i++) {
     const rowStatus = rows[i].getAttribute("data-status");
+    rows[i].setAttribute("class", "");
 
     // Kiểm tra điều kiện lọc
     if (filterValue === "all" || rowStatus === filterValue) {
       rows[i].style.display = ""; // Hiển thị hàng phù hợp
+      if(y % 2 == 0){
+        rows[i].setAttribute("class", "bg-gray-400");
+        y++;
+      }
+      else{
+        rows[i].setAttribute("class", "bg-white");
+        y++;
+      }
     } else {
       rows[i].style.display = "none"; // Ẩn hàng không phù hợp
     }
