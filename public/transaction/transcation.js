@@ -1,4 +1,4 @@
-fetch("tran_data.json")
+fetch("../../src/DATA-transaction.json")
   .then((response) => response.json())
   .then((data) => {
     const tbody = document.getElementById("tbody");
