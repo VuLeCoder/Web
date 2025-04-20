@@ -21,39 +21,10 @@ let id = 0;
 let todo = 0;
 let done = 0;
 
-const addTask = (e) => {
+const addNewTask = (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
-    const text = input.value.trim();
-
-    if (text !== "") {
-      todo++;
-
-      const newTask = document.createElement("div");
-      newTask.classList.add("task");
-
-      const line = document.createElement("div");
-      line.classList.add("content");
-      line.textContent = text;
-
-      newTask.addEventListener("click", () => {
-        addTaskDone(text);
-        todo--;
-        newTask.remove();
-
-        if (todo > 0) {
-          document.getElementById("task-notification").innerHTML = "To Do";
-        } else {
-          document.getElementById("task-notification").innerHTML =
-            "No tasks defined";
-        }
-      });
-
-      newTask.appendChild(line);
-      list.appendChild(newTask);
-
-      input.value = "";
-    }
+    addTask("");
   }
 
   if (todo > 0) {
@@ -62,6 +33,45 @@ const addTask = (e) => {
     document.getElementById("task-notification").innerHTML = "No tasks defined";
   }
 };
+
+function addTask(Text) {
+  let text;
+
+  if (Text !== "") {
+    text = Text;
+  } else {
+    text = input.value.trim();
+  }
+
+  if (text !== "") {
+    todo++;
+
+    const newTask = document.createElement("div");
+    newTask.classList.add("task");
+
+    const line = document.createElement("div");
+    line.classList.add("content");
+    line.textContent = text;
+
+    newTask.addEventListener("click", () => {
+      addTaskDone(text);
+      todo--;
+      newTask.remove();
+
+      if (todo > 0) {
+        document.getElementById("task-notification").innerHTML = "To Do";
+      } else {
+        document.getElementById("task-notification").innerHTML =
+          "No tasks defined";
+      }
+    });
+
+    newTask.appendChild(line);
+    list.appendChild(newTask);
+
+    input.value = "";
+  }
+}
 
 function addTaskDone(text) {
   done++;
@@ -73,6 +83,19 @@ function addTaskDone(text) {
   line.textContent = text;
 
   doneTask.addEventListener("click", () => {
+    done--;
+    doneTask.remove();
+    addTask(text);
+
+    if (done > 0) {
+      document.getElementById("task-done-notification").innerHTML = "Complete";
+    } else {
+      document.getElementById("task-done-notification").innerHTML = "";
+    }
+  });
+
+  doneTask.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
     done--;
     doneTask.remove();
 
@@ -93,4 +116,4 @@ function addTaskDone(text) {
   }
 }
 
-form.addEventListener("keydown", addTask);
+form.addEventListener("keydown", addNewTask);
