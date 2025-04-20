@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My To Do List</title>
+    <link rel="icon" type="image/x-icon" href="images/ava_icon.png" />
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="text">
+        <h1>My Day</h1>
+        <h3 id="current-date">Sunday, April 20</h3>
+      </div>
+
+      <div class="setting">
+        <i class="fa-solid fa-gear"></i>
+        <i class="fa-solid fa-bell"></i>
+        <i class="fa-solid fa-circle-user"></i>
+      </div>
+    </header>
+
+    <form>
+      <main id="your-task">
+        <div id="to-do">
+          <h1 id="task-notification">No tasks defined</h1>
+        </div>
+        <div id="done-task">
+          <h1 id="task-done-notification"></h1>
+        </div>
+      </main>
+
+      <footer>
+        <div>
+          <label for="new-task"> + </label>
+          <input
+            id="new-task"
+            autocomplete="off"
+            type="text"
+            placeholder="Add a task"
+            title="Click to start adding a task"
+          />
+          <!-- <input type="submit" /> -->
+        </div>
+      </footer>
+    </form>
+
+    <script src="script_1.js"></script>
+  </body>
+</html>
